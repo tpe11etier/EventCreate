@@ -2,7 +2,7 @@ require 'savon'
 require 'yaml'
 require 'logger'
 
-LOGGER = Logger.new('output.log', 'w')
+LOGGER = Logger.new('output.log', 'w+')
 LOGGER.level = Logger::DEBUG
 
 begin
@@ -55,8 +55,6 @@ class Service
       end
       @orgid = service.to_hash[:organization_query_root_response][:organization][:organization_id]
     rescue Savon::SOAP::Fault => fault
-      result = fault.to_s
-      puts result
       if result.include?('Credential Check Failed')
         LOGGER.debug { "Credential Check Failed!"}
       else
@@ -86,7 +84,7 @@ def create_event(svc)
     end
     LOGGER.debug { service.to_xml }
   rescue Savon::SOAP::Fault => fault
-    fault.to_s
+  LOGGER.debug { fault.to_s }
 
   end
 end

@@ -1,7 +1,7 @@
 About this program.
 
 This executable was created to test connectivity by doing a SOAP call to send an event to Varolii Support.
-If there is an issue, you will see the output in the debug.log that gets written out.
+If there is an issue, you will see the output in the output.log that gets written out.
 
 Requirememnts.
 This program was written in Ruby(http://www.ruby-lang.org/en/)and converted to a Windows excutable using OCRA(http://ocra.rubyforge.org/).
@@ -17,6 +17,6 @@ Steps to follow:
     Hit Enter.  This should open a terminal window.
 5.  Navigate to your EventCreate folder.  (cd \EventCreate)
 6.  Run eventcreate.exe simply by typing it in.
-7.  After it is complete, a debug.log file should've been created.  Please send this log to Varolii Support.
+7.  After it is complete, a output.log file should've been created.  Please send this log to Varolii Support.
 
 
