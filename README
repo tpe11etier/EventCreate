@@ -1,1 +1,22 @@
-This file was created by JetBrains RubyMine 4.0.3 for binding GitHub repository
+About this program.
+
+This executable was created to test connectivity by doing a SOAP call to send an event to Varolii Support.
+If there is an issue, you will see the output in the debug.log that gets written out.
+
+Requirememnts.
+This program was written in Ruby(http://www.ruby-lang.org/en/)and converted to a Windows excutable using OCRA(http://ocra.rubyforge.org/).
+The only requirement is that you run it on a windows box.  It was only tested using Windows 7 so there may be issues
+with other flavors of Windows.
+
+
+Steps to follow:
+1.  Create a folder on your machine called EventCreate
+2.  Extract the contents of the EventCreate zip file to the EventCreate folder you created.
+3.  Edit the config.yml file and change COMPANYNAME to your Company Name.  eg.  ACME Corporation.
+4.  Open a command prompt.  (Click the windows logo in the left hand corner of your task bar and type 'cmd' in the search box.
+    Hit Enter.  This should open a terminal window.
+5.  Navigate to your EventCreate folder.  (cd \EventCreate)
+6.  Run eventcreate.exe simply by typing it in.
+7.  After it is complete, a debug.log file should've been created.  Please send this log to Varolii Support.
+
+
