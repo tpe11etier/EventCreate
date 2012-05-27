@@ -32,6 +32,7 @@ class Service
   def initialize
     begin
       @client = Savon::Client.new("https://developer4.envoyww.com/WebService/EPAPI_1.0/wsdl.wsdl")
+      @client.http.auth.ssl.verify_mode = :none
       @client.wsdl.soap_actions
       @header = { :AuthHeader => {
           :Domain => "x",
