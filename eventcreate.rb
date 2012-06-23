@@ -24,6 +24,8 @@ end
 
 Gyoku.convert_symbols_to :camelcase
 
+
+
 class Service
   attr_reader :orgid
   attr_reader :client
@@ -31,15 +33,16 @@ class Service
 
   def initialize
     begin
-      @client = Savon::Client.new("https://developer4.envoyww.com/WebService/EPAPI_1.0/wsdl.wsdl")
+      #@client = Savon::Client.new("https://developer4.envoyww.com/WebService/EPAPI_1.0/wsdl.wsdl")
+      @client = Savon::Client.new("https://profiles-api.vrli.com/WebService/EPAPI_1.0/wsdl.wsdl")
       @client.http.auth.ssl.verify_mode = :none
       @client.wsdl.soap_actions
       @header = { :AuthHeader => {
-          :Domain => "x",
-          :UserId => "x",
-          :UserPassword => "x",
-          :OemId => "x",
-          :OemPassword => "x"
+          :Domain => "EXCHANGE",
+          :UserId => "EP_API_ADMIN",
+          :UserPassword => "W@ldo2k7",
+          :OemId => "exchange_oem",
+          :OemPassword => "oem_Ex!_2012"
         }
       }
     rescue Savon::HTTP::Error => fault
@@ -72,11 +75,13 @@ def create_event(svc)
     service = svc.client.request :event_create do
       soap.header = svc.header
       soap.body = {:Events => {:Event => {
-          :EventTypeId => 2634,
-          :EventTeams => {:EventTeam => {:TeamId => "ks3d5kkkb"}},
-          :EventArgs => {:EMAIL_ADDR => {:Name => "EMAIL_ADDR", :Value => "tony.pelletier@varolii.com"},
-                         :SUBJECT => {:Name => "SUBJECT", :Value => "This is a Test Event from #{CONFIG["companyName"]}"},
-                         :BODY => {:Name => "BODY", :Value => "This is a Test Event from #{CONFIG["companyName"]}"}
+          :EventTypeId => "khb33kkkk",
+          :EventTeams => {:EventTeam => {:TeamId => "ky52bkkkk"}},
+          :EventArgs => {:EMAIL_ADDR => {:Name => "EMAIL_ADDR", :Value => "support@varolii.com"},
+                         :SUBJECT => {:Name => "SUBJECT", :Value => "#{CONFIG["companyName"]} - Testing Profiles API Connectivity."},
+                         :BODY => {:Name => "BODY", :Value => "This is just a test."},
+                         :THEME => {:Name => "PRE_THEME", :Value => "EXCHANGE:general;EXCHANGE:;VOICETALENT:DAVID;SON:M_ENG_4"},
+                         :SENDER => {:Name => "SENDER", :Value => "Varolii"}
             }
           }
         }
