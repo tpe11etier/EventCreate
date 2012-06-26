@@ -38,11 +38,11 @@ class Service
       @client.http.auth.ssl.verify_mode = :none
       @client.wsdl.soap_actions
       @header = { :AuthHeader => {
-          :Domain => "EXCHANGE",
-          :UserId => "EP_API_ADMIN",
-          :UserPassword => "W@ldo2k7",
-          :OemId => "exchange_oem",
-          :OemPassword => "oem_Ex!_2012"
+          :Domain => "xxx",
+          :UserId => "xxx",
+          :UserPassword => "xxx",
+          :OemId => "xxx",
+          :OemPassword => "xxx"
         }
       }
     rescue Savon::HTTP::Error => fault
