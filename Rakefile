@@ -3,9 +3,9 @@ task :default do
 	sh %{ rake -T }
 end
 
-desc "Make eventcreate.exe executable"
+desc "Make ConnectivityTest_EP.exe executable"
 task :exe do
-	sh %{ ocra eventcreate.rb }
+	sh %{ ocra ConnectivityTest_EP.rb }
 	sh %{ RD /S /Q dist && MD dist }
-	sh %{ cp config.yml eventcreate.exe README dist } 
+	sh %{ cp config.yml ConnectivityTest_EP.exe README dist }
 end

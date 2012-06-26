@@ -10,13 +10,13 @@ with other flavors of Windows.
 
 
 Steps to follow:
-1.  Create a folder on your machine called EventCreate
-2.  Extract the contents of the EventCreate zip file to the EventCreate folder you created.
-3.  Edit the config.yml file and change COMPANYNAME to your Company Name.  eg.  ACME Corporation.
+1.  Create a folder on your machine called ConnectivityTest_EP
+2.  Extract the contents of the ConnectivityTest_EP zip file to the ConnectivityTest_EP folder you created.
+3.  Edit the config.yml file and change CHANGME to your Company Name.  eg.  ACME Corporation.
 4.  Open a command prompt.  (Click the windows logo in the left hand corner of your task bar and type 'cmd' in the search box.
     Hit Enter.  This should open a terminal window.
-5.  Navigate to your EventCreate folder.  (cd \EventCreate)
-6.  Run eventcreate.exe simply by typing it in.
-7.  After it is complete, a output.log file should've been created.  Please send this log to Varolii Support.
+5.  Navigate to your ConnectivityTest_EP folder.  (cd \ConnectivityTest_EP)
+6.  Run ConnectivityTest_EP.exe simply by typing it in.
+7.  After it is complete, a output.log file should've been created.  If the log contains an error, please send it to Varolii support. support@varolii.com
 
 

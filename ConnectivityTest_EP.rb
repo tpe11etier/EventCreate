@@ -2,7 +2,8 @@ require 'savon'
 require 'yaml'
 require 'logger'
 
-LOGGER = Logger.new('output.log', 'w+')
+FILE = open('output.log', File::WRONLY | File::APPEND | File::CREAT)
+LOGGER = Logger.new(FILE)
 LOGGER.level = Logger::DEBUG
 
 begin
@@ -38,32 +39,33 @@ class Service
       @client.http.auth.ssl.verify_mode = :none
       @client.wsdl.soap_actions
       @header = { :AuthHeader => {
-          :Domain => "xxx",
-          :UserId => "xxx",
+          :Domain => "EXCHANGE",
+          :UserId => "EP_API_ADMIN",
           :UserPassword => "xxx",
           :OemId => "xxx",
           :OemPassword => "xxx"
         }
       }
-    rescue Savon::HTTP::Error => fault
-      LOGGER.debug { fault }
-    rescue Savon::SOAP::Fault => fault
-      LOGGER.debug { fault }
-    end
 
-    begin
       service = client.request :organization_query_root do
         soap.header = header
         soap.body = {}
       end
       @orgid = service.to_hash[:organization_query_root_response][:organization][:organization_id]
+    rescue Savon::HTTP::Error => fault
+      LOGGER.debug {"ERROR: An error has occurred: " + fault.to_s}
+      abort("ERROR: An error has occurred: " + fault.to_s)
     rescue Savon::SOAP::Fault => fault
+      result = fault.to_s
       if result.include?('Credential Check Failed')
         LOGGER.debug { "Credential Check Failed!"}
       else
-        LOGGER.debug { fault }
-        fault.to_s
+        LOGGER.debug {"ERROR: An error has occurred: " + fault.to_s}
+        abort("ERROR: An error has occurred: " + fault.to_s)
       end
+    rescue => fault
+      LOGGER.debug {"ERROR: An error has occurred: " + fault.to_s}
+      abort("ERROR: An error has occurred: " + fault.to_s)
     end
   end
 end
@@ -88,8 +90,10 @@ def create_event(svc)
       }
     end
     LOGGER.debug { service.to_xml }
+    LOGGER.debug { "SUCCESS: Event sent successfully." }
+    puts "SUCCESS: Event sent successfully."
   rescue Savon::SOAP::Fault => fault
-  LOGGER.debug { fault.to_s }
+    LOGGER.debug { fault.to_s }
 
   end
 end
