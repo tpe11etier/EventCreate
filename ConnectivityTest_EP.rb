@@ -13,7 +13,7 @@ rescue Exception => e
   Process.exit
 end
 
-if CONFIG["companyName"] == "COMPANYNAME"
+if CONFIG["companyName"] == "CHANGEME"
   puts "=" * 100
   puts "Please edit the config.yml file and change COMPANYNAME to your company name."
   puts "=" * 100
